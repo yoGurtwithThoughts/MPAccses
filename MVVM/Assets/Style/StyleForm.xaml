@@ -8,9 +8,15 @@
         <Setter Property="VerticalContentAlignment" Value="Bottom"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="BorderThickness" Value="0 0  0 3.5"/>
-        
-
+        <Setter Property="BorderThickness" Value="0 0 0 3.5"/>
+        <Setter Property="FontFamily" Value="pack://application:,,,/MPAccses;component/MVVM/Assets/Fonts/#Jura"/>
+        <Setter Property="FontSize" Value="25"/>
     </Style>
-    
+    <Style x:Key="TetStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="pack://application:,,,/MPAccses;component/MVVM/Assets/Fonts/#Jura"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="Height" Value="auto"/>
+    </Style>
+
 </ResourceDictionary>

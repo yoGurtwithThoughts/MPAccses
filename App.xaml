@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:MPAccses"
              StartupUri="/MVVM/View/MainWindow.xaml">
-    <Application.Resources>
+    <Application.Resources> 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/MVVM/Assets/Style/DubleBorderBack.xaml"/>
                 <ResourceDictionary Source="/MVVM/Assets/Style/StyleForm.xaml"/>
+                <ResourceDictionary Source="/MVVM/Assets/Style/DropMenuButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

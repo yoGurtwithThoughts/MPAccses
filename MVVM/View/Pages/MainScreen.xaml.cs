@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MPAccses.MVVM.Core;
 
 namespace MPAccses.MVVM.View.Pages
 {
@@ -23,6 +24,8 @@ namespace MPAccses.MVVM.View.Pages
         public MainScreen()
         {
             InitializeComponent();
+            FontLoader.LoadFonts();
+            
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -32,6 +35,9 @@ namespace MPAccses.MVVM.View.Pages
 
         private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+        
+
+            // Управляем видимостью WatermarkText в зависимости от текста в NameTextBox
             if (string.IsNullOrEmpty(NameTextBox.Text))
             {
                 WatermarkText.Visibility = Visibility.Visible;
@@ -39,7 +45,28 @@ namespace MPAccses.MVVM.View.Pages
             else
             {
                 WatermarkText.Visibility = Visibility.Collapsed;
+                WatermarkText.VerticalAlignment = VerticalAlignment.Bottom;
             }
+        }
+
+        private void NameTextBox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void NameTextBox2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void NameTextBox3_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void DropButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
     
