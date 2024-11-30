@@ -17,7 +17,7 @@ namespace MPAccses.MVVM.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
-            this.Users = new HashSet<Users>();
+            this.Users1 = new HashSet<Users1>();
         }
     
         public int ID_Role { get; set; }
@@ -26,6 +26,6 @@ namespace MPAccses.MVVM.Model
     
         public virtual Department Department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users> Users { get; set; }
+        public virtual ICollection<Users1> Users1 { get; set; }
     }
 }

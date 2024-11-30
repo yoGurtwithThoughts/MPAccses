@@ -1,4 +1,5 @@
 ﻿using MPAccses.MVVM.DB;
+using MPAccses.MVVM.Model;
 using MPAccses.MVVM.Model.ModelData;
 using System;
 using System.Collections.Generic;
@@ -9,40 +10,46 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
+using Xunit.Sdk;
 
 namespace MPAccses.MVVM.ViewModel
 {
     public class RoleViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Role> Roles { get; set; }
+        public ObservableCollection<User> Users { get; set; }
 
-        private Role _selectedRole;
+        private User _selectedRole;
 
-        public Role SelectedRole
+        public User SelectedRole
         {
             get => _selectedRole;
             set
             {
                 _selectedRole = value;
                 OnPropertyChanged();
+                
             }
         }
-
+        
         public RoleViewModel()
         {
-            Roles = new ObservableCollection<Role>();
-            LoadRoles(); // Загружаем роли при инициализации
+            Users = new ObservableCollection<User>();
+            LoadUser(); 
         }
 
-        private void LoadRoles()
+        private void LoadUser()
         {
-            using (var context = new ApplicationDbContext())
+            using (var context = new ISMPEntities())
             {
-                var roles = context.Roles.ToList(); // Загрузка данных из базы
-                Roles.Clear();
-                foreach (var role in roles)
+                var users = context.Users1.ToList(); 
+
+                Users.Clear(); 
+
+                foreach (var user in users)
                 {
-                    Roles.Add(role);
+                    
+                    //Users.Add(users);
                 }
             }
         }

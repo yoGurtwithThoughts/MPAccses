@@ -84,12 +84,13 @@
                                        Style="{StaticResource TetStyle}"
                                        Visibility="Visible"/>
                         </Canvas>
+
                         <TextBox x:Name="NameTextBox3" 
-                                Style="{StaticResource FormAuohto}" 
+                                 Style="{StaticResource FormAuohto}" 
                                 Margin="50,20,0,0" 
-                                HorizontalAlignment="Left"
-                                TextChanged="NameTextBox3_TextChanged"
-                                VerticalContentAlignment="Center" Height="53" />
+                                 HorizontalAlignment="Left"
+                                 TextChanged="NameTextBox3_TextChanged"
+                                VerticalContentAlignment="Center" Height="53" />    
                         <Canvas>
                             <TextBlock x:Name="WatermarkText3"
                                        Text="Отчество" 
@@ -100,15 +101,13 @@
                                        IsHitTestVisible="False"
                                        Opacity="0.5"
                                        Style="{StaticResource TetStyle}"
-                                       Visibility="Visible"/>
-                           
-                     
+                                       Visibility="Visible"/>   
                         </Canvas>
                         <TextBox x:Name="NameTextBox4" 
                              Style="{StaticResource FormAuohto}" 
                             Margin="50,20,0,0" 
                              HorizontalAlignment="Left"
-                             TextChanged="NameTextBox3_TextChanged"
+                             TextChanged="NameTextBox4_TextChanged"
                             VerticalContentAlignment="Center" Height="53" />
                         <Canvas>
                             <TextBlock x:Name="WatermarkText4"
@@ -122,6 +121,12 @@
                                        Style="{StaticResource TetStyle}"
                                        Visibility="Visible"/>
                         </Canvas>
+                        <Border x:Name="Valid" Style="{StaticResource DropButton}"
+                                MouseDown="Valid_MouseDown"
+                                Margin="0 15 0 0 ">
+                            <TextBlock Style="{StaticResource StyleContent}"
+                                       Text="Войти"></TextBlock>
+                        </Border>
                     </StackPanel>
                 </Canvas>
             </Grid>

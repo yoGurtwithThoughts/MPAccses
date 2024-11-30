@@ -89,13 +89,15 @@
           <Property Name="Details" Type="int" Nullable="false" />
           <Property Name="Status" Type="int" />
         </EntityType>
-        <EntityType Name="Users">
+        <EntityType Name="Users1">
           <Key>
             <PropertyRef Name="ID_User" />
           </Key>
           <Property Name="ID_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code_User" Type="nvarchar" MaxLength="50" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="SureName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
           <Property Name="Role" Type="int" />
         </EntityType>
         <Association Name="FK_Assemblies_Department">
@@ -119,18 +121,6 @@
             </Principal>
             <Dependent Role="Assemblies">
               <PropertyRef Name="Detailes" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Department_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="Department" Type="Self.Department" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID_User" />
-            </Principal>
-            <Dependent Role="Department">
-              <PropertyRef Name="Users" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -266,14 +256,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_Role">
+        <Association Name="FK_Users1_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <End Role="Users1" Type="Self.Users1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="ID_Role" />
             </Principal>
-            <Dependent Role="Users">
+            <Dependent Role="Users1">
               <PropertyRef Name="Role" />
             </Dependent>
           </ReferentialConstraint>
@@ -319,7 +309,7 @@
           <EntitySet Name="Subassemblies" EntityType="Self.Subassemblies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users1" EntityType="Self.Users1" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Assemblies_Department" Association="Self.FK_Assemblies_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Assemblies" EntitySet="Assemblies" />
@@ -327,10 +317,6 @@
           <AssociationSet Name="FK_Assemblies_Detailes" Association="Self.FK_Assemblies_Detailes">
             <End Role="Detailes" EntitySet="Detailes" />
             <End Role="Assemblies" EntitySet="Assemblies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Department_Users" Association="Self.FK_Department_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Department" EntitySet="Department" />
           </AssociationSet>
           <AssociationSet Name="FK_Process_Detailes" Association="Self.FK_Process_Detailes">
             <End Role="Detailes" EntitySet="Detailes" />
@@ -376,9 +362,9 @@
             <End Role="Status" EntitySet="Status" />
             <End Role="Tasks" EntitySet="Tasks" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
+          <AssociationSet Name="FK_Users1_Role" Association="Self.FK_Users1_Role">
             <End Role="Role" EntitySet="Role" />
-            <End Role="Users" EntitySet="Users" />
+            <End Role="Users1" EntitySet="Users1" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -407,7 +393,6 @@
           <Property Name="Name_Departament" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Users" Type="Int32" />
           <NavigationProperty Name="Assemblies" Relationship="Self.FK_Assemblies_Department" FromRole="Department" ToRole="Assemblies" />
-          <NavigationProperty Name="Users1" Relationship="Self.FK_Department_Users" FromRole="Department" ToRole="Users" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Role_Department" FromRole="Department" ToRole="Role" />
           <NavigationProperty Name="Subassemblies" Relationship="Self.FK_Subassemblies_Department" FromRole="Department" ToRole="Subassemblies" />
           <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Department" FromRole="Department" ToRole="Tasks" />
@@ -447,7 +432,7 @@
           <Property Name="Name_Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Departaments" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="Self.FK_Role_Department" FromRole="Role" ToRole="Department" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Role" FromRole="Role" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="ISMPModel.FK_Users1_Role" FromRole="Role" ToRole="Users1" />
         </EntityType>
         <EntityType Name="Subassemblies">
           <Key>
@@ -489,17 +474,6 @@
           <Property Name="Status" Type="Int32" />
           <NavigationProperty Name="Status1" Relationship="ISMPModel.FK_Tasks_Status" FromRole="Tasks" ToRole="Status" />
         </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="ID_User" />
-          </Key>
-          <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SureName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Role" Type="Int32" />
-          <NavigationProperty Name="Department" Relationship="Self.FK_Department_Users" FromRole="Users" ToRole="Department" />
-          <NavigationProperty Name="Role1" Relationship="Self.FK_Users_Role" FromRole="Users" ToRole="Role" />
-        </EntityType>
         <Association Name="FK_Assemblies_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Assemblies" Type="Self.Assemblies" Multiplicity="*" />
@@ -533,18 +507,6 @@
             </Principal>
             <Dependent Role="Subassemblies">
               <PropertyRef Name="Assemblyes" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Department_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="Department" Type="Self.Department" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID_User" />
-            </Principal>
-            <Dependent Role="Department">
-              <PropertyRef Name="Users" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -656,18 +618,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="ID_Role" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="Role" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ISMPEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Assemblies" EntityType="Self.Assemblies" />
           <EntitySet Name="Department" EntityType="Self.Department" />
@@ -677,7 +627,6 @@
           <EntitySet Name="Subassemblies" EntityType="Self.Subassemblies" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tasks" EntityType="Self.Tasks" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
           <AssociationSet Name="FK_Assemblies_Department" Association="Self.FK_Assemblies_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Assemblies" EntitySet="Assemblies" />
@@ -689,10 +638,6 @@
           <AssociationSet Name="FK_Subassemblies_Assemblies" Association="Self.FK_Subassemblies_Assemblies">
             <End Role="Assemblies" EntitySet="Assemblies" />
             <End Role="Subassemblies" EntitySet="Subassemblies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Department_Users" Association="Self.FK_Department_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Department" EntitySet="Department" />
           </AssociationSet>
           <AssociationSet Name="FK_Role_Department" Association="Self.FK_Role_Department">
             <End Role="Department" EntitySet="Department" />
@@ -730,10 +675,6 @@
             <End Role="Detailes" EntitySet="Detailes" />
             <End Role="Tasks" EntitySet="Tasks" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -769,6 +710,11 @@
             <End Role="Status" EntitySet="Status" />
             <End Role="Tasks" EntitySet="Tasks" />
           </AssociationSet>
+          <EntitySet Name="Users1" EntityType="ISMPModel.Users1" />
+          <AssociationSet Name="FK_Users1_Role" Association="ISMPModel.FK_Users1_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Users1" EntitySet="Users1" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -798,6 +744,30 @@
             </Principal>
             <Dependent Role="Tasks">
               <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Users1">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SureName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="Int32" />
+          <NavigationProperty Name="Role1" Relationship="ISMPModel.FK_Users1_Role" FromRole="Users1" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Users1_Role">
+          <End Type="ISMPModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="ISMPModel.Users1" Role="Users1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Users1">
+              <PropertyRef Name="Role" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -892,16 +862,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="ISMPModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="SureName" ColumnName="SureName" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище ISMPModel.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище ISMPModel.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище ISMPModel.sp_dropdiagram" />
@@ -931,6 +891,18 @@
               <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="Status1" ColumnName="Status" />
                 <ScalarProperty Name="ID_Status" ColumnName="ID_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users1">
+            <EntityTypeMapping TypeName="ISMPModel.Users1">
+              <MappingFragment StoreEntitySet="Users1">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="SureName" ColumnName="SureName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code_User" ColumnName="Code_User" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
