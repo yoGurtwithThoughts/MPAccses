@@ -12,19 +12,18 @@ namespace MPAccses.MVVM.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Tasks
+    public partial class Status
     {
-        public int ID_Tasks { get; set; }
-        public string Name_Task { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> Departament { get; set; }
-        public int Details { get; set; }
-        public Nullable<int> Status { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Status()
+        {
+            this.Tasks = new HashSet<Tasks>();
+        }
     
-        public virtual Department Department { get; set; }
-        public virtual Department Department1 { get; set; }
-        public virtual Detailes Detailes { get; set; }
-        public virtual Detailes Detailes1 { get; set; }
-        public virtual Status Status1 { get; set; }
+        public int ID_Status { get; set; }
+        public string Status1 { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tasks> Tasks { get; set; }
     }
 }

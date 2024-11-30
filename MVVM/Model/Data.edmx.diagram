@@ -28,6 +28,8 @@
         <AssociationConnector Association="ISMPModel.FK_Tasks_Detailes" ManuallyRouted="false" />
         <AssociationConnector Association="ISMPModel.FK_Tasks_Detailes1" ManuallyRouted="false" />
         <AssociationConnector Association="ISMPModel.FK_Users_Role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ISMPModel.Status" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="ISMPModel.FK_Tasks_Status" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

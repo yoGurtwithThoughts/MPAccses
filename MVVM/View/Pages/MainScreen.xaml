@@ -53,7 +53,7 @@
                                 Margin="50,20,0,0" 
                                 HorizontalAlignment="Left"
                                 TextChanged="NameTextBox1_TextChanged"
-                                VerticalContentAlignment="Center" Height="53" />            
+                                VerticalContentAlignment="Center" Height="53" />
                         <Canvas>
                             <TextBlock x:Name="WatermarkText1"
                                        Text="Фамилия" 
@@ -64,14 +64,14 @@
                                        IsHitTestVisible="False"
                                        Opacity="0.5"
                                        Style="{StaticResource TetStyle}"
-                                       Visibility="Visible"/>   
+                                       Visibility="Visible"/>
                         </Canvas>
                         <TextBox x:Name="NameTextBox2" 
                                     Style="{StaticResource FormAuohto}" 
                                     Margin="50,20,0,0" 
                                     HorizontalAlignment="Left"
                                     TextChanged="NameTextBox2_TextChanged"
-                                    VerticalContentAlignment="Center" Height="53" />        
+                                    VerticalContentAlignment="Center" Height="53" />
                         <Canvas>
                             <TextBlock x:Name="WatermarkText2"
                                        Text="Имя" 
@@ -82,14 +82,14 @@
                                        IsHitTestVisible="False"
                                        Opacity="0.5"
                                        Style="{StaticResource TetStyle}"
-                                       Visibility="Visible"/>   
+                                       Visibility="Visible"/>
                         </Canvas>
                         <TextBox x:Name="NameTextBox3" 
                                 Style="{StaticResource FormAuohto}" 
                                 Margin="50,20,0,0" 
                                 HorizontalAlignment="Left"
                                 TextChanged="NameTextBox3_TextChanged"
-                                VerticalContentAlignment="Center" Height="53" />    
+                                VerticalContentAlignment="Center" Height="53" />
                         <Canvas>
                             <TextBlock x:Name="WatermarkText3"
                                        Text="Отчество" 
@@ -101,24 +101,30 @@
                                        Opacity="0.5"
                                        Style="{StaticResource TetStyle}"
                                        Visibility="Visible"/>
+                           
+                     
                         </Canvas>
-                        <Border Style="{StaticResource DropButton}"
-                                Margin="0 35 0 0"
-                                x:Name="DropButton"
-                                MouseDown="DropButton_MouseDown">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="160"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Style="{StaticResource StyleContent}"
-                                           Text="Должность"/>
-                            </Grid>
-                            
-                        </Border>
+                        <TextBox x:Name="NameTextBox4" 
+                             Style="{StaticResource FormAuohto}" 
+                            Margin="50,20,0,0" 
+                             HorizontalAlignment="Left"
+                             TextChanged="NameTextBox3_TextChanged"
+                            VerticalContentAlignment="Center" Height="53" />
+                        <Canvas>
+                            <TextBlock x:Name="WatermarkText4"
+                                       Text="Должность" 
+                                       HorizontalAlignment="Left"
+                                       Foreground="#888888"
+                                       Canvas.Left="55"
+                                       Canvas.Top="-45"
+                                       IsHitTestVisible="False"
+                                       Opacity="0.5"
+                                       Style="{StaticResource TetStyle}"
+                                       Visibility="Visible"/>
+                        </Canvas>
                     </StackPanel>
                 </Canvas>
             </Grid>
-        </Border>
+        </Border>     
     </Grid>
 </Page>

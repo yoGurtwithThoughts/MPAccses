@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -64,6 +65,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="MVVM\Assets\Style\DropMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\Assets\Style\DropMenuButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -86,6 +91,9 @@
     </Compile>
     <Compile Include="MVVM\Core\FontLoader.cs" />
     <Compile Include="MVVM\Core\Navigation.cs" />
+    <Compile Include="MVVM\Core\ConnectDB.cs" />
+    <Compile Include="MVVM\DB\ConnectTable.cs" />
+    <Compile Include="MVVM\DB\DataHelperDB.cs" />
     <Compile Include="MVVM\Model\Assemblies.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
@@ -110,6 +118,7 @@
     <Compile Include="MVVM\Model\Detailes.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Model\ModelData\RoleModel.cs" />
     <Compile Include="MVVM\Model\Process.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
@@ -120,6 +129,9 @@
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Model\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Model\Status.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Model\Subassemblies.cs">
@@ -134,6 +146,8 @@
     <Compile Include="MVVM\Model\Users.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\ViewModel\RelayCommand.cs" />
+    <Compile Include="MVVM\ViewModel\RoleViewModel.cs" />
     <Compile Include="MVVM\View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -181,10 +195,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MVVM\DB\" />
-    <Folder Include="MVVM\ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="MVVM\Assets\Images\texture.png" />
   </ItemGroup>

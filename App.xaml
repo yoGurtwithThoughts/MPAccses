@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="/MVVM/Assets/Style/DubleBorderBack.xaml"/>
                 <ResourceDictionary Source="/MVVM/Assets/Style/StyleForm.xaml"/>
                 <ResourceDictionary Source="/MVVM/Assets/Style/DropMenuButton.xaml"/>
+                <ResourceDictionary Source="/MVVM/Assets/Style/DropMenu.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
