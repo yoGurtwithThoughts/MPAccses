@@ -90,7 +90,7 @@
                                 Margin="50,20,0,0" 
                                  HorizontalAlignment="Left"
                                  TextChanged="NameTextBox3_TextChanged"
-                                VerticalContentAlignment="Center" Height="53" />    
+                                VerticalContentAlignment="Center" Height="53" />
                         <Canvas>
                             <TextBlock x:Name="WatermarkText3"
                                        Text="Отчество" 
@@ -101,32 +101,16 @@
                                        IsHitTestVisible="False"
                                        Opacity="0.5"
                                        Style="{StaticResource TetStyle}"
-                                       Visibility="Visible"/>   
-                        </Canvas>
-                        <TextBox x:Name="NameTextBox4" 
-                             Style="{StaticResource FormAuohto}" 
-                            Margin="50,20,0,0" 
-                             HorizontalAlignment="Left"
-                             TextChanged="NameTextBox4_TextChanged"
-                            VerticalContentAlignment="Center" Height="53" />
-                        <Canvas>
-                            <TextBlock x:Name="WatermarkText4"
-                                       Text="Должность" 
-                                       HorizontalAlignment="Left"
-                                       Foreground="#888888"
-                                       Canvas.Left="55"
-                                       Canvas.Top="-45"
-                                       IsHitTestVisible="False"
-                                       Opacity="0.5"
-                                       Style="{StaticResource TetStyle}"
                                        Visibility="Visible"/>
                         </Canvas>
-                        <Border x:Name="Valid" Style="{StaticResource DropButton}"
+                        
+                            <Border x:Name="Valid" Style="{StaticResource DropButton}"
                                 MouseDown="Valid_MouseDown"
-                                Margin="0 15 0 0 ">
-                            <TextBlock Style="{StaticResource StyleContent}"
+                                Margin="0 25 0 0 ">
+                                <TextBlock Style="{StaticResource StyleContent}"
                                        Text="Войти"></TextBlock>
-                        </Border>
+                            </Border>
+                       
                     </StackPanel>
                 </Canvas>
             </Grid>

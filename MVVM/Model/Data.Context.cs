@@ -34,7 +34,7 @@ namespace MPAccses.MVVM.Model
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Subassemblies> Subassemblies { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Tasks> Tasks { get; set; }
+        public virtual DbSet<Tasks> Task { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<Users1> Users1 { get; set; }
     

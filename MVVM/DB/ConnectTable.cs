@@ -10,7 +10,7 @@ namespace MPAccses.MVVM.DB
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<User> Roles { get; set; }
+        public DbSet<User> User1s { get; set; }
 
         public ApplicationDbContext() : base("ISMPEntities")
         {
