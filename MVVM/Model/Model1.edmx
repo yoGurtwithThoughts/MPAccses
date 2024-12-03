@@ -268,37 +268,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище ISMPModelContainer">
           <EntitySet Name="Assemblies" EntityType="Self.Assemblies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
@@ -432,7 +401,15 @@
           <Property Name="Name_Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Departaments" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="Self.FK_Role_Department" FromRole="Role" ToRole="Department" />
-          <NavigationProperty Name="Users1" Relationship="ISMPModel.FK_Users1_Role" FromRole="Role" ToRole="Users1" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK_Users1_Role" FromRole="Role" ToRole="Users1" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID_Status" />
+          </Key>
+          <Property Name="ID_Status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Status" FromRole="Status" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="Subassemblies">
           <Key>
@@ -467,12 +444,24 @@
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="Departament" Type="Int32" />
           <Property Name="Details" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="Self.FK_Tasks_Department" FromRole="Tasks" ToRole="Department" />
           <NavigationProperty Name="Department1" Relationship="Self.FK_Tasks_Department1" FromRole="Tasks" ToRole="Department" />
           <NavigationProperty Name="Detailes" Relationship="Self.FK_Tasks_Detailes" FromRole="Tasks" ToRole="Detailes" />
           <NavigationProperty Name="Detailes1" Relationship="Self.FK_Tasks_Detailes1" FromRole="Tasks" ToRole="Detailes" />
-          <Property Name="Status" Type="Int32" />
-          <NavigationProperty Name="Status1" Relationship="ISMPModel.FK_Tasks_Status" FromRole="Tasks" ToRole="Status" />
+          <NavigationProperty Name="Status1" Relationship="Self.FK_Tasks_Status" FromRole="Tasks" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="Users1">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SureName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="Int32" />
+          <NavigationProperty Name="Role1" Relationship="Self.FK_Users1_Role" FromRole="Users1" ToRole="Role" />
         </EntityType>
         <Association Name="FK_Assemblies_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
@@ -618,15 +607,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ISMPEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_Users1_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Users1" Type="Self.Users1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Users1">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tasks_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID_Status" />
+            </Principal>
+            <Dependent Role="Tasks">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ISMPEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Assemblies" EntityType="Self.Assemblies" />
           <EntitySet Name="Department" EntityType="Self.Department" />
           <EntitySet Name="Detailes" EntityType="Self.Detailes" />
           <EntitySet Name="Process" EntityType="Self.Process" />
           <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
           <EntitySet Name="Subassemblies" EntityType="Self.Subassemblies" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tasks" EntityType="Self.Tasks" />
+          <EntitySet Name="Users1" EntityType="Self.Users1" />
           <AssociationSet Name="FK_Assemblies_Department" Association="Self.FK_Assemblies_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Assemblies" EntitySet="Assemblies" />
@@ -675,108 +690,21 @@
             <End Role="Detailes" EntitySet="Detailes" />
             <End Role="Tasks" EntitySet="Tasks" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ISMPModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ISMPModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="Status" EntityType="ISMPModel.Status" />
-          <AssociationSet Name="FK_Tasks_Status" Association="ISMPModel.FK_Tasks_Status">
-            <End Role="Status" EntitySet="Status" />
-            <End Role="Tasks" EntitySet="Tasks" />
-          </AssociationSet>
-          <EntitySet Name="Users1" EntityType="ISMPModel.Users1" />
-          <AssociationSet Name="FK_Users1_Role" Association="ISMPModel.FK_Users1_Role">
+          <AssociationSet Name="FK_Users1_Role" Association="Self.FK_Users1_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Users1" EntitySet="Users1" />
           </AssociationSet>
+          <AssociationSet Name="FK_Tasks_Status" Association="Self.FK_Tasks_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="Status">
-          <Key>
-            <PropertyRef Name="ID_Status" />
-          </Key>
-          <Property Name="ID_Status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Tasks" Relationship="ISMPModel.FK_Tasks_Status" FromRole="Status" ToRole="Tasks" />
-        </EntityType>
-        <Association Name="FK_Tasks_Status">
-          <End Type="ISMPModel.Status" Role="Status" Multiplicity="0..1" />
-          <End Type="ISMPModel.Tasks" Role="Tasks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Status">
-              <PropertyRef Name="ID_Status" />
-            </Principal>
-            <Dependent Role="Tasks">
-              <PropertyRef Name="Status" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Users1">
-          <Key>
-            <PropertyRef Name="ID_User" />
-          </Key>
-          <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SureName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Role" Type="Int32" />
-          <NavigationProperty Name="Role1" Relationship="ISMPModel.FK_Users1_Role" FromRole="Users1" ToRole="Role" />
-        </EntityType>
-        <Association Name="FK_Users1_Role">
-          <End Type="ISMPModel.Role" Role="Role" Multiplicity="0..1" />
-          <End Type="ISMPModel.Users1" Role="Users1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="ID_Role" />
-            </Principal>
-            <Dependent Role="Users1">
-              <PropertyRef Name="Role" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ISMPModelContainer" CdmEntityContainer="ISMPEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ISMPModelContainer" CdmEntityContainer="ISMPEntities1">
           <EntitySetMapping Name="Assemblies">
             <EntityTypeMapping TypeName="ISMPModel.Assemblies">
               <MappingFragment StoreEntitySet="Assemblies">
@@ -828,6 +756,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="ISMPModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="ID_Status" ColumnName="ID_Status" />
+                <ScalarProperty Name="Status1" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Subassemblies">
             <EntityTypeMapping TypeName="ISMPModel.Subassemblies">
               <MappingFragment StoreEntitySet="Subassemblies">
@@ -853,56 +789,24 @@
           <EntitySetMapping Name="Tasks">
             <EntityTypeMapping TypeName="ISMPModel.Tasks">
               <MappingFragment StoreEntitySet="Tasks">
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ID_Tasks" ColumnName="ID_Tasks" />
                 <ScalarProperty Name="Name_Task" ColumnName="Name_Task" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Departament" ColumnName="Departament" />
                 <ScalarProperty Name="Details" ColumnName="Details" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище ISMPModel.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище ISMPModel.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище ISMPModel.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище ISMPModel.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ISMPModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище ISMPModel.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ISMPModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище ISMPModel.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище ISMPModel.sp_upgraddiagrams" />
-          <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="ISMPModel.Status">
-              <MappingFragment StoreEntitySet="Status">
-                <ScalarProperty Name="Status1" ColumnName="Status" />
-                <ScalarProperty Name="ID_Status" ColumnName="ID_Status" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users1">
             <EntityTypeMapping TypeName="ISMPModel.Users1">
               <MappingFragment StoreEntitySet="Users1">
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="SureName" ColumnName="SureName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Code_User" ColumnName="Code_User" />
                 <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="Code_User" ColumnName="Code_User" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SureName" ColumnName="SureName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

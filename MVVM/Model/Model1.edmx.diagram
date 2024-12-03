@@ -4,15 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c2c8c120eed9433cbf59223e5c2419f6" Name="Diagram1" ZoomLevel="85">
-        <EntityTypeShape EntityType="ISMPModel.Assemblies" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+      <Diagram DiagramId="1e14d1106fc344abbd532babfc843c4d" Name="Diagram1">
+        <EntityTypeShape EntityType="ISMPModel.Assemblies" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ISMPModel.Department" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ISMPModel.Detailes" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ISMPModel.Process" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ISMPModel.Role" Width="1.5" PointX="1.5" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ISMPModel.Subassemblies" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ISMPModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ISMPModel.Tasks" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISMPModel.Detailes" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISMPModel.Process" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISMPModel.Role" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISMPModel.Status" Width="1.5" PointX="3.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISMPModel.Subassemblies" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISMPModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISMPModel.Tasks" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISMPModel.Users1" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
         <AssociationConnector Association="ISMPModel.FK_Assemblies_Department" ManuallyRouted="false" />
         <AssociationConnector Association="ISMPModel.FK_Assemblies_Detailes" ManuallyRouted="false" />
         <AssociationConnector Association="ISMPModel.FK_Subassemblies_Assemblies" ManuallyRouted="false" />
@@ -25,10 +27,8 @@
         <AssociationConnector Association="ISMPModel.FK_Subassemblies_Detailes1" ManuallyRouted="false" />
         <AssociationConnector Association="ISMPModel.FK_Tasks_Detailes" ManuallyRouted="false" />
         <AssociationConnector Association="ISMPModel.FK_Tasks_Detailes1" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ISMPModel.Status" Width="1.5" PointX="5.375" PointY="0.875" />
-        <AssociationConnector Association="ISMPModel.FK_Tasks_Status" />
-        <EntityTypeShape EntityType="ISMPModel.Users1" Width="1.5" PointX="3.75" PointY="15" />
-        <AssociationConnector Association="ISMPModel.FK_Users1_Role" />
+        <AssociationConnector Association="ISMPModel.FK_Users1_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="ISMPModel.FK_Tasks_Status" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

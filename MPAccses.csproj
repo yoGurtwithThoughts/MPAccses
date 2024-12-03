@@ -114,57 +114,51 @@
     <Compile Include="MVVM\DB\ConnectTable.cs" />
     <Compile Include="MVVM\DB\DataHelperDB.cs" />
     <Compile Include="MVVM\Model\Assemblies.cs">
-      <DependentUpon>Data.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Model\Data.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Data.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Model\Data.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Data.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Model\Data.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Data.edmx</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Model\Department.cs">
-      <DependentUpon>Data.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Model\Detailes.cs">
-      <DependentUpon>Data.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Model\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Model\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Model\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Model\ModelData\TaskModel.cs" />
     <Compile Include="MVVM\Model\ModelData\UserModel.cs" />
     <Compile Include="MVVM\Model\Process.cs">
-      <DependentUpon>Data.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Model\Role.cs">
-      <DependentUpon>Data.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Model\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Data.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Model\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Data.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Model\Status.cs">
-      <DependentUpon>Data.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Model\Subassemblies.cs">
-      <DependentUpon>Data.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Model\sysdiagrams.cs">
-      <DependentUpon>Data.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Model\Tasks.cs">
-      <DependentUpon>Data.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Model\Users1.cs">
-      <DependentUpon>Data.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MVVM\ViewModel\BottomBarViewModelcs.cs" />
     <Compile Include="MVVM\ViewModel\RelayCommand.cs" />
@@ -208,12 +202,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Resource Include="MVVM\Assets\Fonts\Jura.ttf" />
-    <EntityDeploy Include="MVVM\Model\Data.edmx">
+    <EntityDeploy Include="MVVM\Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Data.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="MVVM\Model\Data.edmx.diagram">
-      <DependentUpon>Data.edmx</DependentUpon>
+    <None Include="MVVM\Model\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -224,22 +218,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="MVVM\Model\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MVVM\Model\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="MVVM\Assets\Images\texture.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MVVM\Assets\Images\power.png" />
-    <Content Include="MVVM\Model\Data.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Data.Context.cs</LastGenOutput>
-      <DependentUpon>Data.edmx</DependentUpon>
-    </Content>
-    <Content Include="MVVM\Model\Data.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Data.edmx</DependentUpon>
-      <LastGenOutput>Data.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
