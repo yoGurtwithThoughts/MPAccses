@@ -29,6 +29,7 @@ namespace MPAccses.MVVM.View.Pages
     /// </summary>
     public partial class MainScreen : Page
     {
+    
         private ISMPEntities1 _db = new ISMPEntities1();
         public MainScreen()
         {
@@ -70,12 +71,32 @@ namespace MPAccses.MVVM.View.Pages
 
         private void Valid_MouseDown(object sender, MouseButtonEventArgs e)
         {
+       
+        DateTime lastLoginTime = Properties.Settings.Default.LastLoginTime;
+            int shiftNumber = Properties.Settings.Default.ShiftNumber;
+
+           
+            if ((DateTime.Now - lastLoginTime).TotalHours >= 24)
+            {
                
+                shiftNumber++;
+                Properties.Settings.Default.ShiftNumber = shiftNumber;
+            }
+
+            // Обновляем время последней авторизации
+            Properties.Settings.Default.LastLoginTime = DateTime.Now;
+
+            // Сохраняем настройки
+            Properties.Settings.Default.Save();
+
+            // Обновляем свойство ShiftNumber
+            ShiftNumber = shiftNumber;
+
             string inputSureName = NameTextBox1.Text; 
             string inputName = NameTextBox2.Text;
             Console.WriteLine(_db.Database.Connection.ConnectionString);
             _db.Database.Log = Console.WriteLine;
-            Console.WriteLine($"Searching for Name: {inputName}, SureName: {inputSureName}");
+           
             try
             {
                 Users1 userModel = _db.Users1.FirstOrDefault(x => x.Name == NameTextBox2.Text && x.SureName == NameTextBox1.Text);

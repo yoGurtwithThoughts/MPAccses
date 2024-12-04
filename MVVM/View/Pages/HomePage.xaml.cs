@@ -24,23 +24,19 @@ namespace MPAccses.MVVM.View.Pages
     /// </summary>
     public partial class HomePage : Page
     {
+       
         public HomePage()
         {
             InitializeComponent();
             this.DataContext = new BottomBarViewModel();
+            this.DataContext = this;
         }
 
         private void ShotDown_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
         }
-        //private List<Task> GetTasksFromDatabase()
-        //{
-        //    using (var context = new ISMPEntities())
-        //    {
-        //        return context.Tasks.ToList();
-        //    }
-        //}
+       
 
     }
 }

@@ -34,5 +34,19 @@ namespace MPAccses.Properties {
                 this["LastShift"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LastLoginCount {
+            get {
+                return ((int)(this["LastLoginCount"]));
+            }
+            set {
+                this["LastLoginCount"] = value;
+            }
+        }
+
+        public int ShiftNumber { get; internal set; }
     }
 }
