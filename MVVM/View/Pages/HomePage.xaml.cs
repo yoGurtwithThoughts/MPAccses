@@ -62,5 +62,11 @@ namespace MPAccses.MVVM.View.Pages
             LoadCount();
             IncrementLastCount();
         }
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
     }
 }

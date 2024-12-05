@@ -8,7 +8,7 @@
       Loaded="Page_Loaded"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HomePage">
-      <Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
@@ -60,93 +60,97 @@
                 </Grid>
             </DockPanel>
          </Grid>
-        <Grid Grid.Row="1"
+        <ContentControl x:Name="ChangePage">
+            <Grid Grid.Row="1"
               Grid.Column="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="45"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Border Style="{StaticResource StatusTask}"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="45"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Style="{StaticResource StatusTask}"
                         Grid.Row="0" Margin="0 25 0 0 ">
-                    <StackPanel Orientation="Horizontal"
+                        <StackPanel Orientation="Horizontal"
                                 >
-                        <Grid Grid.Column="1"
+                            <Grid Grid.Column="1"
                               Width="1228">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding Name_Task}" 
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Name_Task}" 
                                        Grid.Column="0"
                                        Style="{StaticResource StatusData}"/>
-                            <TextBlock Text="{Binding Date, StringFormat='{}{0:yyyy-MM-dd}'}" 
+                                <TextBlock Text="{Binding Date, StringFormat='{}{0:yyyy-MM-dd}'}" 
                                         Grid.Column="1"
                                        Style="{StaticResource StatusData}"/>
-                            <TextBlock Text="{Binding Departament}" 
+                                <TextBlock Text="{Binding Departament}" 
                                         Grid.Column="2"
                                        Style="{StaticResource StatusData}"/>
-                        </Grid>
-                    </StackPanel>
-                </Border>
-                <Border Style="{StaticResource StatusTask}"
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource StatusTask}"
                         Grid.Row="1"
                         Margin="0 25 0 0 ">
-                    <StackPanel Orientation="Horizontal">
-                        <Grid Grid.Column="1"
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Grid.Column="1"
                               Width="1228">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding Name_Task}" 
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Name_Task}" 
                                          Grid.Column="0"
                                          Style="{StaticResource StatusData}"/>
-                            <TextBlock Text="{Binding Date, StringFormat='{}{0:yyyy-MM-dd}'}" 
+                                <TextBlock Text="{Binding Date, StringFormat='{}{0:yyyy-MM-dd}'}" 
                                       Grid.Column="1"
                                      Style="{StaticResource StatusData}"/>
-                            <TextBlock Text="{Binding Departament}" 
+                                <TextBlock Text="{Binding Departament}" 
                                       Grid.Column="2"
                                       Style="{StaticResource StatusData}"/>
-                        </Grid>
-                    </StackPanel>
-                </Border>
-                <Border Style="{StaticResource StatusTask}"
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource StatusTask}"
                      Grid.Row="2" Margin="0 25 0 0 ">
-                    <StackPanel Orientation="Horizontal">
-                        <Grid Grid.Column="1"
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Grid.Column="1"
                 Width="1228">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding Name_Task}" 
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Name_Task}" 
                                        Grid.Column="0"
                          Style="{StaticResource StatusData}"/>
-                            <TextBlock Text="{Binding Date, StringFormat='{}{0:yyyy-MM-dd}'}" 
+                                <TextBlock Text="{Binding Date, StringFormat='{}{0:yyyy-MM-dd}'}" 
                           Grid.Column="1"
                          Style="{StaticResource StatusData}"/>
-                            <TextBlock Text="{Binding Departament}" 
+                                <TextBlock Text="{Binding Departament}" 
                           Grid.Column="2"
                          Style="{StaticResource StatusData}"/>
-                        </Grid>
-                    </StackPanel>
+                            </Grid>
+                        </StackPanel>
 
-                </Border>
+                    </Border>
+
+                </Grid>
+
+
             </Grid>
-
-
-        </Grid>
-        
+        </ContentControl>
+        <Button x:Name="Test"
+                Click="Test_Click"></Button>
     </Grid>
 </Page>
