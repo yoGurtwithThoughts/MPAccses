@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MPAccses.MVVM.Model.ModelData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,10 +37,10 @@ namespace MPAccses.MVVM.ViewModel
 
         public BottomBarViewModel()
         {
-            // Устанавливаем начальные данные
+         
             _currentShift = LoadShiftFromSettings();
 
-            // Запуск таймера для обновления времени
+         
             DispatcherTimer timer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromSeconds(1)
@@ -51,11 +53,22 @@ namespace MPAccses.MVVM.ViewModel
         {
             CurrentDateTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
         }
+        private int LastCount()
+        {
+            int savedShiftCount = Properties.Settings.Default.LastLoginCount;
 
+           
+            int newShiftCount = savedShiftCount + 1;
+
+         
+            Properties.Settings.Default.LastLoginCount = newShiftCount;
+            Properties.Settings.Default.Save();
+
+     
+            return newShiftCount;
+        }
         private int LoadShiftFromSettings()
         {
-            // Логика загрузки смены (например, из файла, БД или настроек приложения)
-            // Пример с использованием свойств приложения:
             int savedShift = Properties.Settings.Default.LastShift;
             int newShift = savedShift + 1;
             Properties.Settings.Default.LastShift = newShift;

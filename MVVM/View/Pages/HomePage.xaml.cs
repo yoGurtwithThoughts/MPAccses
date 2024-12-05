@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,20 +24,43 @@ namespace MPAccses.MVVM.View.Pages
     /// Логика взаимодействия для HomePage.xaml
     /// </summary>
     public partial class HomePage : Page
-    {
-       
+    {  private int _count = 0;
+        private void IncrementLastCount()
+        {
+            _count++; 
+            UpdateLastCountText(); 
+        }
+
+        private void UpdateLastCountText()
+        {
+            Count.Text = _count.ToString();
+            SaveCount();
+        }
+        private void LoadCount()
+        {
+            _count = Properties.Settings.Default.LastLoginCount;
+        }
         public HomePage()
         {
             InitializeComponent();
             this.DataContext = new BottomBarViewModel();
-            this.DataContext = this;
+         
         }
 
         private void ShotDown_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
         }
-       
+        private void SaveCount()
+        {
+            Properties.Settings.Default.LastLoginCount = _count;
+            Properties.Settings.Default.Save();
+        }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadCount();
+            IncrementLastCount();
+        }
     }
 }

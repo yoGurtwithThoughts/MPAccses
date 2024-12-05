@@ -29,5 +29,10 @@ namespace MPAccses
             CoreNavigate.NavigatorCore = MainFrame;
             MainFrame.Navigate(new MainScreen());
         }
+
+        internal void UpdateFontSize()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

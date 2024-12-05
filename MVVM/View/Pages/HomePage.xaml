@@ -5,10 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MPAccses.MVVM.View.Pages"
       mc:Ignorable="d" 
+      Loaded="Page_Loaded"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HomePage">
-  
-    <Grid>
+      <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
@@ -26,31 +26,40 @@
                         <ColumnDefinition Width="225"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"
-                               Style="{StaticResource BottomBarTextStyle}"
-                               Text="{Binding CurrentDateTime}"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Left"
-                               Margin="15 0 0 0"/>
+                           Style="{StaticResource BottomBarTextStyle}"
+                           Text="{Binding CurrentDateTime}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="15 0 0 0"/>
                     <TextBlock Grid.Column="1" Text="" />
                     <TextBlock Grid.Column="1"
-                               Style="{StaticResource BottomBarTextStyle}"
-                               Text="Смена:"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Margin="15 0 0 0"/>
+                           Style="{StaticResource BottomBarTextStyle}"
+                           Text="Смена:" 
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="15 0 0 0"/>  
+                    <TextBlock Grid.Column="1" Text="" />
+                    <TextBlock Grid.Column="1"
+                                    Width="155"
+                                   x:Name="Count"
+                                   Style="{StaticResource BottomBarTextStyle}"
+                                   Text="{Binding  LastCount}" 
+                                   TextAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Margin="150 0 0 0"/>
                     <StackPanel x:Name="ShotDown" Grid.Column="2"
-                                HorizontalAlignment="Right"
-                                MouseDown="ShotDown_MouseDown"
-                                Margin="0 0 35 0"
-                                VerticalAlignment="Center">
+                            HorizontalAlignment="Right"
+                            MouseDown="ShotDown_MouseDown"
+                            Margin="0 0 35 0"
+                            VerticalAlignment="Center">
                         <Image Source="/MVVM/Assets/Images/power.png" 
-                          Height="20"
-                          Width="20"/>
+                           Height="20"
+                           Width="20"/>
                     </StackPanel>
                 </Grid>
             </DockPanel>
-          
-        </Grid>
+         </Grid>
         <Grid Grid.Row="1"
               Grid.Column="0">
             <Grid.ColumnDefinitions>
@@ -87,34 +96,32 @@
                                        Style="{StaticResource StatusData}"/>
                         </Grid>
                     </StackPanel>
-
                 </Border>
                 <Border Style="{StaticResource StatusTask}"
-          Grid.Row="1"
+                        Grid.Row="1"
                         Margin="0 25 0 0 ">
                     <StackPanel Orientation="Horizontal">
                         <Grid Grid.Column="1"
-                Width="1228">
+                              Width="1228">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding Name_Task}" 
-                         Grid.Column="0"
-                         Style="{StaticResource StatusData}"/>
+                                         Grid.Column="0"
+                                         Style="{StaticResource StatusData}"/>
                             <TextBlock Text="{Binding Date, StringFormat='{}{0:yyyy-MM-dd}'}" 
-                          Grid.Column="1"
-                         Style="{StaticResource StatusData}"/>
+                                      Grid.Column="1"
+                                     Style="{StaticResource StatusData}"/>
                             <TextBlock Text="{Binding Departament}" 
-                          Grid.Column="2"
-                         Style="{StaticResource StatusData}"/>
+                                      Grid.Column="2"
+                                      Style="{StaticResource StatusData}"/>
                         </Grid>
                     </StackPanel>
-
                 </Border>
                 <Border Style="{StaticResource StatusTask}"
-          Grid.Row="2" Margin="0 25 0 0 ">
+                     Grid.Row="2" Margin="0 25 0 0 ">
                     <StackPanel Orientation="Horizontal">
                         <Grid Grid.Column="1"
                 Width="1228">
@@ -124,7 +131,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding Name_Task}" 
-                         Grid.Column="0"
+                                       Grid.Column="0"
                          Style="{StaticResource StatusData}"/>
                             <TextBlock Text="{Binding Date, StringFormat='{}{0:yyyy-MM-dd}'}" 
                           Grid.Column="1"

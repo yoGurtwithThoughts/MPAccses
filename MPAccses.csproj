@@ -80,6 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="MVVM\Assets\Style\DropMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\Assets\Style\DropMenuButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +115,7 @@
     <Compile Include="MVVM\Core\FontLoader.cs" />
     <Compile Include="MVVM\Core\Navigation.cs" />
     <Compile Include="MVVM\Core\ConnectDB.cs" />
+    <Compile Include="MVVM\Core\TestFixtureAttribute.cs" />
     <Compile Include="MVVM\DB\ConnectTable.cs" />
     <Compile Include="MVVM\DB\DataHelperDB.cs" />
     <Compile Include="MVVM\Model\Assemblies.cs">

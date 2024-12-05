@@ -36,6 +36,8 @@ namespace MPAccses.MVVM.View.Pages
             InitializeComponent();
             FontLoader.LoadFonts();
             
+
+
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -71,27 +73,6 @@ namespace MPAccses.MVVM.View.Pages
 
         private void Valid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-       
-        DateTime lastLoginTime = Properties.Settings.Default.LastLoginTime;
-            int shiftNumber = Properties.Settings.Default.ShiftNumber;
-
-           
-            if ((DateTime.Now - lastLoginTime).TotalHours >= 24)
-            {
-               
-                shiftNumber++;
-                Properties.Settings.Default.ShiftNumber = shiftNumber;
-            }
-
-            // Обновляем время последней авторизации
-            Properties.Settings.Default.LastLoginTime = DateTime.Now;
-
-            // Сохраняем настройки
-            Properties.Settings.Default.Save();
-
-            // Обновляем свойство ShiftNumber
-            ShiftNumber = shiftNumber;
-
             string inputSureName = NameTextBox1.Text; 
             string inputName = NameTextBox2.Text;
             Console.WriteLine(_db.Database.Connection.ConnectionString);
@@ -104,7 +85,6 @@ namespace MPAccses.MVVM.View.Pages
                 if (userModel!=null)
                 {
                     CoreNavigate.NavigatorCore.Navigate(new HomePage());
-               
                 }
                 else
                 {
@@ -120,6 +100,8 @@ namespace MPAccses.MVVM.View.Pages
                 MessageBox.Show($"Произошла ошибка: {ex.Message}",
                     "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
         }
+      
     }
 }
