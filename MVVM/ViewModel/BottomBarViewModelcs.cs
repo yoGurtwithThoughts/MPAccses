@@ -1,4 +1,5 @@
-﻿using MPAccses.MVVM.Model.ModelData;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using MPAccses.MVVM.Model.ModelData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,14 +15,31 @@ namespace MPAccses.MVVM.ViewModel
     {
         private string _currentDateTime;
         private int _currentShift;
+        private int _count = 0;
+
+        public int Count
+        {
+            get => _count;
+            set
+            {
+                if (_count != value)
+                {
+                    _count = value;
+                    OnPropertyChanged(nameof(Count));
+                }
+            }
+        }
 
         public string CurrentDateTime
         {
             get => _currentDateTime;
             set
             {
-                _currentDateTime = value;
-                OnPropertyChanged(nameof(CurrentDateTime));
+                if (_currentDateTime != value)
+                {
+                    _currentDateTime = value;
+                    OnPropertyChanged(nameof(CurrentDateTime));
+                }
             }
         }
 
@@ -30,17 +48,19 @@ namespace MPAccses.MVVM.ViewModel
             get => _currentShift;
             set
             {
-                _currentShift = value;
-                OnPropertyChanged(nameof(CurrentShift));
+                if (_currentShift != value)
+                {
+                    _currentShift = value;
+                    OnPropertyChanged(nameof(CurrentShift));
+                }
             }
         }
 
         public BottomBarViewModel()
         {
-         
+            LoadCount(); 
             _currentShift = LoadShiftFromSettings();
 
-         
             DispatcherTimer timer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromSeconds(1)
@@ -53,20 +73,24 @@ namespace MPAccses.MVVM.ViewModel
         {
             CurrentDateTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
         }
-        private int LastCount()
+
+        private void SaveCount()
         {
-            int savedShiftCount = Properties.Settings.Default.LastLoginCount;
-
-           
-            int newShiftCount = savedShiftCount + 1;
-
-         
-            Properties.Settings.Default.LastLoginCount = newShiftCount;
+            Properties.Settings.Default.LastLoginCount = _count;
             Properties.Settings.Default.Save();
-
-     
-            return newShiftCount;
         }
+
+        private void IncrementLastCount()
+        {
+            Count++;
+            SaveCount();
+        }
+
+        private void LoadCount()
+        {
+            Count = Properties.Settings.Default.LastLoginCount;
+        }
+
         private int LoadShiftFromSettings()
         {
             int savedShift = Properties.Settings.Default.LastShift;
@@ -84,4 +108,4 @@ namespace MPAccses.MVVM.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    }
+}

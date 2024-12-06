@@ -2,27 +2,34 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="DropMenu" TargetType="Border">
         <Setter Property="Background" Value="#4D4D4D"/>
-        <Setter Property="Opacity" Value="0.45"/>
+        <Setter Property="Opacity" Value="0.25"/>
         <Setter Property="Height" Value="265"/>
-        <Setter Property="Width" Value="516"/>
+        <Setter Property="Width" Value="560"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="2.5"/>
     </Style>
     <Style x:Key="MenuButton" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="0 0 0 4.5"/>
+        <Setter Property="BorderThickness" Value="0 0 0 2.5"/>
         <Setter Property="Height" Value="53"/>
+        <Setter Property="Width" Value="560"/>
         <Setter Property="Foreground" Value="#FFFF"/>
         <Setter Property="FontFamily" Value="pack://application:,,,/MPAccses;component/MVVM/Assets/Fonts/#Jura"/>
         <Setter Property="FontSize" Value="25"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Width" Value="366"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Style.Triggers>
-                <Trigger Property="IsEnabled" Value="True">
+        <!--<Style.Triggers>
+                <Trigger Property="M" Value="True">
                     <Setter Property="Background" Value="White"/>
-                    <Setter Property="Opacity" Value="0.15"/>
-                </Trigger>
-            </Style.Triggers>
+                                   </Trigger>
+            </Style.Triggers>-->
       </Style>
+    <Style x:Key="PopStyle" TargetType="Popup">
+        <Setter Property="Height" Value="265"/>
+        <Setter Property="Width" Value="560"/>
+        <Setter Property="DocumentViewerBase.Background" Value="Transparent"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+    </Style>
 </ResourceDictionary>

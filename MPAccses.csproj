@@ -85,8 +85,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Assets\Style\DropMenuButton.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MVVM\Assets\Style\DubleBorderBack.xaml">
       <SubType>Designer</SubType>
@@ -104,6 +104,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\Assets\Style\StyleNavBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -115,7 +119,6 @@
     <Compile Include="MVVM\Core\FontLoader.cs" />
     <Compile Include="MVVM\Core\Navigation.cs" />
     <Compile Include="MVVM\Core\ConnectDB.cs" />
-    <Compile Include="MVVM\Core\TestFixtureAttribute.cs" />
     <Compile Include="MVVM\DB\ConnectTable.cs" />
     <Compile Include="MVVM\DB\DataHelperDB.cs" />
     <Compile Include="MVVM\Model\Assemblies.cs">
@@ -142,6 +145,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Model\ModelData\ModelUpdateTask.cs" />
     <Compile Include="MVVM\Model\ModelData\TaskModel.cs" />
     <Compile Include="MVVM\Model\ModelData\UserModel.cs" />
     <Compile Include="MVVM\Model\Process.cs">
@@ -184,6 +188,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\Pages\NewTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\View\Pages\EditStatus.xaml.cs">
@@ -194,6 +202,9 @@
     </Compile>
     <Compile Include="MVVM\View\Pages\MainScreen.xaml.cs">
       <DependentUpon>MainScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Pages\NewTask.xaml.cs">
+      <DependentUpon>NewTask.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -231,6 +242,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MVVM\Assets\Images\Polygon 1.png" />
+    <Resource Include="MVVM\Assets\Images\Vector.png" />
+    <Resource Include="MVVM\Assets\Images\Vector %281%29.png" />
+    <Resource Include="MVVM\Assets\Images\arrow-left.png" />
+    <Resource Include="MVVM\Assets\Images\save.png" />
     <Content Include="MVVM\Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

@@ -1,4 +1,5 @@
-﻿using MPAccses.MVVM.Model;
+﻿using MPAccses.MVVM.Core;
+using MPAccses.MVVM.Model;
 using MPAccses.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MPAccses.MVVM.Core.Navigation;
 
 namespace MPAccses.MVVM.View.Pages
 {
@@ -24,49 +26,30 @@ namespace MPAccses.MVVM.View.Pages
     /// Логика взаимодействия для HomePage.xaml
     /// </summary>
     public partial class HomePage : Page
-    {  private int _count = 0;
-        private void IncrementLastCount()
-        {
-            _count++; 
-            UpdateLastCountText(); 
-        }
-
-        private void UpdateLastCountText()
-        {
-            Count.Text = _count.ToString();
-            SaveCount();
-        }
-        private void LoadCount()
-        {
-            _count = Properties.Settings.Default.LastLoginCount;
-        }
+    { 
         public HomePage()
         {
             InitializeComponent();
             this.DataContext = new BottomBarViewModel();
-         
+           
         }
 
         private void ShotDown_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
         }
-        private void SaveCount()
+      
+
+       
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.LastLoginCount = _count;
-            Properties.Settings.Default.Save();
+            CoreNavigate.NavigatorCore.Navigate(new EditStatus());
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void NewTask_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            LoadCount();
-            IncrementLastCount();
-        }
-
-        private void Test_Click(object sender, RoutedEventArgs e)
-        {
-            
-
+            CoreNavigate.NavigatorCore.Navigate(new NewTask());
         }
     }
 }
