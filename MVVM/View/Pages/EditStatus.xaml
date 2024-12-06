@@ -87,6 +87,11 @@
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1">
+            <TextBlock Grid.Row="1" Style="{StaticResource StatusData}"
+                       x:Name="Message"
+                       VerticalAlignment="Bottom"
+                       HorizontalAlignment="Center"
+                       />
             <StackPanel Orientation="Vertical"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
@@ -95,32 +100,68 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="105"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="260"/>
+                            <ColumnDefinition Width="275"/>
                             <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
-                        <Popup Grid.Row="2" Grid.ColumnSpan="3" x:Name="ListData"
+                        <Popup x:Name="Departament"
+                               Style="{StaticResource PopStyle}"
+                               Placement="MousePoint"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="3">
+                            <Border Style="{StaticResource DropMenu}">
+                                <StackPanel Orientation="Vertical"
+                                             Background="Transparent">
+                                    <Button x:Name="D1"
+                                             Style="{StaticResource MenuButton}"
+                                             Content="Цех 1"
+                                             Foreground="White"
+                                             Click="D1_Click"   
+                                              Tag="Цех 1"/>    
+                                    <Button x:Name="D2"
+                                             Style="{StaticResource MenuButton}"
+                                             Content="Цех 2"
+                                             Click="D2_Click"
+                                              Tag="Цех 2"
+                                             />
+                                    <Button x:Name="NewPr"
+                                              Style="{StaticResource MenuButton}"
+                                              Content="в обработке"
+                                              Click="NewPr_Click"
+                                               Tag="Цех 2"
+                                             />
+                                </StackPanel>
+                            </Border>
+                        </Popup>
+                        <TextBlock  Style="{StaticResource StatusData}"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    x:Name="DepartamentTextBlock" />
+                        <Popup Grid.Row="2" Grid.ColumnSpan="3" 
+                               x:Name="ListData"
                                Placement="MousePoint"
                                Style="{StaticResource PopStyle}"
-                               StaysOpen="False">
+                               StaysOpen="False"
+                               HorizontalAlignment="Right">
                             <Border Style="{StaticResource DropMenu}">
                                 <StackPanel Orientation="Vertical"
                                             Background="Transparent">
                                     <Button x:Name="Process"
                                         Style="{StaticResource MenuButton}"
-                                        Content="готов"
+                                        Content="в процессе"
                                         Foreground="White"
                                         Click="Process_Click"
                                          Tag="в процессе"/>
                                     <Button x:Name="Already"
                                             Style="{StaticResource MenuButton}"
-                                            Content="в процессе"
+                                            Content="готов"
                                             Click="Already_Click"
                                             Tag="готово"
                                             />
-                                    <Button x:Name="NewPr"
+                                    <Button x:Name="D3"
                                              Style="{StaticResource MenuButton}"
                                              Content="в обработке"
-                                             Click="NewPr_Click"
+                                             Click="D3_Click"
                                              Tag="в обработке"
                                             />  
                                 </StackPanel>

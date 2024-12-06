@@ -171,7 +171,6 @@
     </Compile>
     <Compile Include="MVVM\ViewModel\BottomBarViewModelcs.cs" />
     <Compile Include="MVVM\ViewModel\RelayCommand.cs" />
-    <Compile Include="MVVM\ViewModel\TaskViewModel.cs" />
     <Compile Include="MVVM\View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
