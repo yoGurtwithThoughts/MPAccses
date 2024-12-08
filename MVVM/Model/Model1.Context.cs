@@ -35,5 +35,6 @@ namespace MPAccses.MVVM.Model
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tasks> Tasks { get; set; }
         public virtual DbSet<Users1> Users1 { get; set; }
+        public object Departament { get;  set; }
     }
 }

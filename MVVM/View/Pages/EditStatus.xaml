@@ -95,19 +95,24 @@
             <StackPanel Orientation="Vertical"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center">
-                <Border Style="{StaticResource StatusTask}">
+                <Border Style="{StaticResource StatusTask}"
+                        x:Name="Status1">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="105"/>
+                            <ColumnDefinition Width="150"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="275"/>
+                            <ColumnDefinition Width="350"/>
                             <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
-                        <Popup x:Name="Departament"
+                        <TextBlock Grid.Column="0"
+                                   Text="Код:00001"
+                                   Style="{StaticResource StatusData}"/>
+                        <Popup x:Name="DepartamentMenu"
                                Style="{StaticResource PopStyle}"
                                Placement="MousePoint"
                                Grid.Column="1"
                                Grid.ColumnSpan="3">
+                            
                             <Border Style="{StaticResource DropMenu}">
                                 <StackPanel Orientation="Vertical"
                                              Background="Transparent">
@@ -125,15 +130,25 @@
                                              />
                                     <Button x:Name="NewPr"
                                               Style="{StaticResource MenuButton}"
-                                              Content="в обработке"
-                                              Click="NewPr_Click"
-                                               Tag="Цех 2"
+                                              Content="Цех 3"
+                                              Click="D3_Click"
+                                               Tag="Цех 3"
                                              />
                                 </StackPanel>
                             </Border>
                         </Popup>
+                        <Border x:Name="OpenMenuDepart"
+                                Grid.Column="1"
+                                MouseDown="OpenMenuDepart_MouseDown"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right">
+                        <Image Source="/MVVM/Assets/Images/Polygon 1.png" 
+                               Height="15"
+                               Width="15"/> 
+                        </Border>
                         <TextBlock  Style="{StaticResource StatusData}"
                                     Grid.Column="1"
+                                    Text="Цех:"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     x:Name="DepartamentTextBlock" />
@@ -161,7 +176,7 @@
                                     <Button x:Name="D3"
                                              Style="{StaticResource MenuButton}"
                                              Content="в обработке"
-                                             Click="D3_Click"
+                                             Click="NewPr_Click"
                                              Tag="в обработке"
                                             />  
                                 </StackPanel>
