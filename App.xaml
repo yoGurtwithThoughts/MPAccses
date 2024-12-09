@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="/MVVM/Assets/Style/DropMenu.xaml"/>
                 <ResourceDictionary Source="/MVVM/Assets/Style/DropMenuButton.xaml"/>
                 <ResourceDictionary Source="/MVVM/Assets/Style/StyleNavBar.xaml"/>
+                <ResourceDictionary Source="/MVVM/Assets/Style/NewStatus.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

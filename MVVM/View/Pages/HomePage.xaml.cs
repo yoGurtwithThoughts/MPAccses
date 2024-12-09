@@ -39,7 +39,7 @@ namespace MPAccses.MVVM.View.Pages
             editStatus.StatusUpdated += (department, status) =>
             {
                 model.Departament = department;
-                model.Status = status;
+                model.Status1 = status;
             };
 
         }
@@ -68,21 +68,20 @@ namespace MPAccses.MVVM.View.Pages
             if (model != null)
             {
                 model.Departament = department;
-                model.Status = status;
+                model.Status1 = status;
             }
         
         }
         private void NewTask_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            CoreNavigate.NavigatorCore.Navigate(new NewTask());
+           CoreNavigate.NavigatorCore.Navigate(new NewTaskPage());
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (sender is Border border)
             {
-             
-                border.Background = new SolidColorBrush(Colors.LightGray); 
+                border.Background = new SolidColorBrush(Colors.LightGray);
 
                 var departamentTextBlock = (TextBlock)border.FindName("DepartamentTextBlock");
                 var statusTextBlock = (TextBlock)border.FindName("StatusTextBlock");
@@ -90,12 +89,23 @@ namespace MPAccses.MVVM.View.Pages
                 string department = departamentTextBlock?.Text.Replace("Цех: ", "").Trim();
                 string status = statusTextBlock?.Text.Replace("Статус: ", "").Trim();
 
-              
                 var editStatusPage = new EditStatus();
-                editStatusPage.StatusUpdated += UpdateStatusDisplay;
-                CoreNavigate.NavigatorCore.Navigate(editStatusPage);
 
-               
+                // Подписываемся на событие
+                editStatusPage.StatusUpdated += (updatedDepartment, updatedStatus) =>
+                {
+                    // Обновляем текстовые блоки
+                    if (departamentTextBlock != null)
+                    {
+                        departamentTextBlock.Text = $"Цех: {updatedDepartment}";
+                    }
+                    if (statusTextBlock != null)
+                    {
+                        statusTextBlock.Text = $"Статус: {updatedStatus}";
+                    }
+                };
+
+                CoreNavigate.NavigatorCore.Navigate(editStatusPage);
                 editStatusPage.SetInitialValues(department, status);
             }
         }

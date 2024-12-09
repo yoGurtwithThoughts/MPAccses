@@ -15,7 +15,7 @@
     <Style x:Key="StyleContent" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="pack://application:,,,/MPAccses;component/MVVM/Assets/Fonts/#Jura"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Opacity" Value="0.35"></Setter>
+        <Setter Property="Opacity" Value="0.45"></Setter>
         <Setter Property="FontSize" Value="28"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -25,8 +25,7 @@
         <Setter Property="Width" Value="15"/>
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
-                
-            </Trigger>
+             </Trigger>
         </Style.Triggers>
 
     </Style>

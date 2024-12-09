@@ -92,6 +92,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\Assets\Style\NewStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\Assets\Style\StatusBottombar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,6 +125,7 @@
     <Compile Include="MVVM\Core\ConnectDB.cs" />
     <Compile Include="MVVM\DB\ConnectTable.cs" />
     <Compile Include="MVVM\DB\DataHelperDB.cs" />
+    <Compile Include="MVVM\DB\NewTask.cs" />
     <Compile Include="MVVM\Model\Assemblies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -189,7 +194,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\Pages\NewTask.xaml">
+    <Page Include="MVVM\View\Pages\NewTaskPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -204,8 +209,8 @@
     <Compile Include="MVVM\View\Pages\MainScreen.xaml.cs">
       <DependentUpon>MainScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\Pages\NewTask.xaml.cs">
-      <DependentUpon>NewTask.xaml</DependentUpon>
+    <Compile Include="MVVM\View\Pages\NewTaskPage.xaml.cs">
+      <DependentUpon>NewTaskPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -247,6 +252,17 @@
     <Resource Include="MVVM\Assets\Images\Vector %281%29.png" />
     <Resource Include="MVVM\Assets\Images\arrow-left.png" />
     <Resource Include="MVVM\Assets\Images\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MVVM\Assets\Images\texture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MVVM\Assets\Images\power.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="MVVM\Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -257,15 +273,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MVVM\Assets\Images\texture.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MVVM\Assets\Images\power.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

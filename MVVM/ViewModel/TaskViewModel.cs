@@ -9,19 +9,11 @@ namespace MPAccses.MVVM.ViewModel
 {
     public class TaskModel : INotifyPropertyChanged
     {
-        private string _code;
+        
         private string _departament;
-        private string _status;
+        private string _status1;
 
-        public string Code
-        {
-            get => _code;
-            set
-            {
-                _code = value;
-                OnPropertyChanged(nameof(Code));
-            }
-        }
+     
 
         public string Departament
         {
@@ -33,13 +25,13 @@ namespace MPAccses.MVVM.ViewModel
             }
         }
 
-        public string Status
+        public string Status1
         {
-            get => _status;
+            get => _status1;
             set
             {
-                _status = value;
-                OnPropertyChanged(nameof(Status));
+                _status1 = value;
+                OnPropertyChanged(nameof(Status1));
             }
         }
 

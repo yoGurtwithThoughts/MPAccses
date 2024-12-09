@@ -20,6 +20,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using static MPAccses.MVVM.Core.Navigation;
 using Department = MPAccses.MVVM.Model.Department;
+using TaskModel = MPAccses.MVVM.Model.ModelData.TaskModel;
 
 namespace MPAccses.MVVM.View.Pages
 {
@@ -30,7 +31,7 @@ namespace MPAccses.MVVM.View.Pages
     {
         public event Action<string, string> StatusUpdated;
         private DispatcherTimer _timer;
-        private ISMPEntities1 _db = new ISMPEntities1();
+        private ISMPEntities2 _db = new ISMPEntities2();
 
         public EditStatus()
         {
@@ -105,6 +106,7 @@ namespace MPAccses.MVVM.View.Pages
                 }
 
                 DepartamentMenu.IsOpen = false;
+           
             }
         }
 
@@ -132,7 +134,7 @@ namespace MPAccses.MVVM.View.Pages
 
             try
             {
-                using (var context = new ISMPEntities1())
+                using (var context = new ISMPEntities2())
                 {
                     var department = context.Department.FirstOrDefault(d => d.Name_Departament == currentDepartment)
                                      ?? new Department { Name_Departament = currentDepartment };

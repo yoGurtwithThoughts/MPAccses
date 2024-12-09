@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="NewTaskBorder" TargetType="Border">
+        <Setter Property="Background" Value="#4D4D4D"/>
+        <Setter Property="Opacity" Value="0.45"/>
+        <Setter Property="Height" Value="700"/>
+        <Setter Property="Width" Value="1000"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="2.5"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+       <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="TextboxStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="0 0 0 2.5"/>
+        <Setter Property="Height" Value="55"/>
+        <Setter Property="Width" Value="800"/>
+       <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="pack://application:,,,/MPAccses;component/MVVM/Assets/Fonts/#Jura"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="15 0 20 1"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="TextTitle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="pack://application:,,,/MPAccses;component/MVVM/Assets/Fonts/#Jura"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
+        <Setter Property="Opacity" Value="0.45"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+    </Style>
+</ResourceDictionary>

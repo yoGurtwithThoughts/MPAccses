@@ -13,10 +13,10 @@ namespace MPAccses.MVVM.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ISMPEntities1 : DbContext
+    public partial class ISMPEntities2 : DbContext
     {
-        public ISMPEntities1()
-            : base("name=ISMPEntities1")
+        public ISMPEntities2()
+            : base("name=ISMPEntities2")
         {
         }
     
@@ -35,6 +35,5 @@ namespace MPAccses.MVVM.Model
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tasks> Tasks { get; set; }
         public virtual DbSet<Users1> Users1 { get; set; }
-        public object Departament { get;  set; }
     }
 }

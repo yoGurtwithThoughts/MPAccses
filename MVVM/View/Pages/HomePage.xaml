@@ -47,7 +47,7 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Style="{StaticResource NavItem}"
-                                MouseDown="NewTask_MouseDown"/>
+                               />
                         <StackPanel Orientation="Vertical"
                                      Height="Auto"
                                      Width="Auto"
@@ -55,7 +55,8 @@
                             <Image Source="/MVVM/Assets/Images/Vector (1).png" 
                                    Height="25"
                                    Width="25"
-                                   Stretch="Uniform"/>
+                                   Stretch="Uniform"
+                                    MouseDown="NewTask_MouseDown"/>
                             <TextBlock Style="{StaticResource ButtonStyle}"
                                        Text="Оформить заказ"
                                        HorizontalAlignment="Center"/>
@@ -126,23 +127,22 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="13*"/>
+                            <ColumnDefinition Width="12*"/>
                             <ColumnDefinition Width="350"/>
                             <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Код: 0001"
                                    Style="{StaticResource StatusData}"
-                                   Grid.Column="0"/>
+                                   Grid.Column="0" HorizontalAlignment="Left" Margin="18,0,0,0"/>
                         <TextBlock Text="{Binding Departament}"  
                        Style="{StaticResource StatusData}" 
                        Grid.Column="1" 
-                       VerticalAlignment="Center" 
-                       HorizontalAlignment="Center"/>
+                       HorizontalAlignment="Left" Margin="400,0,0,0"/>
                         <TextBlock Text="{Binding Status}" 
                        Style="{StaticResource StatusData}" 
-                       Grid.Column="2" 
-                       VerticalAlignment="Center" 
-                       HorizontalAlignment="Left"/>
+                       Grid.Column="3" 
+                       HorizontalAlignment="Left" Margin="10,0,0,0"/>
                     </Grid>
                 </Border>
             </Grid>

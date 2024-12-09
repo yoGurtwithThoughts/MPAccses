@@ -30,7 +30,7 @@ namespace MPAccses.MVVM.View.Pages
     public partial class MainScreen : Page
     {
     
-        private ISMPEntities1 _db = new ISMPEntities1();
+        private ISMPEntities2 _db = new ISMPEntities2();
         public MainScreen()
         {
             InitializeComponent();
